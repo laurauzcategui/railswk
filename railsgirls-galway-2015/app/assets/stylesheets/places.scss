@@ -1,0 +1,27 @@
+// Place all the styles related to the places controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.container a:hover {
+  color: #f55e55;
+  text-decoration: none;
+  background-color: #eab4fd
+//background-color: rgba(255, 255, 255, 0);
+// background-image:  url('grey.png')
+}
+
+.container input[type="submit"] { height: 30px;
+  font-size: 13px;
+  font-weight: bold;
+  background-color: #7e526b;
+  border: none;
+  color: #fff; }
+
+.video-container {
+     position: relative; /* keeps the aspect ratio */
+     padding-bottom: 56.25%; /* fine tunes the video positioning */
+     padding-top: 60px; overflow: hidden;
+  }
+
+  .video-container iframe,
+  .video-container object,
+  .video-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }

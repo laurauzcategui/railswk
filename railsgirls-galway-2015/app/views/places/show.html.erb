@@ -1,0 +1,46 @@
+<h3>Places created</h3>
+
+<div class="row">
+  <div class="span9">
+    <%= image_tag(@place.picture_url, :width => 600) if @place.picture.present? %>
+  </div>
+
+  <div class="span3">
+    <p><b>Name: </b><%= @place.name %></p>
+
+    <p><b>User Rating as Autism-friendly: </b><%= rating_for @place, "autism_friendly" %></p>
+    <p><b>User Overall Rating: </b><%= rating_for @place, "overall" %></p>
+    <p>Your <b>Vote as Autism-friendly: </b><%= rating_for_user @place, current_user, "autism_friendly", :star => 7 %></p>
+    <p>Your <b>Overall Vote: </b><%= rating_for_user @place, current_user, "autism_friendly", :star => 7 %></p>
+
+    <p><b>Description: </b><%= @place.description %></p>
+    <p><b>Address: </b><%= @place.address %></p>
+    <p><b>Latitude: </b><%= @place.latitude %></p>
+    <p><b>Longitude: </b><%= @place.longitude %></p>
+    <p><b>Creator ID: </b><%= @place.user_id %></p>
+
+  <p>
+      <%= link_to 'Edit', edit_place_path(@place) %> |
+<%= link_to 'Back', places_path %>
+    </p>
+  </div>
+</div>
+
+<h3>Comments</h3>
+<% @comments.each do |comment| %>
+  <div>
+    <strong><%= comment.user_id %></strong>
+    <br />
+    <p><%= comment.body %></p>
+
+ <% if user_signed_in? %>
+	  <% if current_user.id == comment.user_id %>
+
+    <p><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+
+  <% end %>
+	<% end %>
+
+  </div>
+<% end %>
+<%= render 'comments/form' %>
